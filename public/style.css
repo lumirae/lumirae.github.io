@@ -1,0 +1,90 @@
+/* Light Mode */
+[data-theme="light"] {
+  --background: #f8e3e3;
+  --text: #000000;
+  --primary: #ff7e7e;
+  --secondary: #ffbbbc;
+  --accent: #ffadad;
+  --button-bg: #ffadad;
+  --switch-bg: #b3b3b370;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --background: #1a1a1a;
+  --text: #ffffff;
+  --primary: #ff7e7e;
+  --secondary: #ffbbbc;
+  --accent: #ffadad;
+  --button-bg: #ff7e7e;
+  --switch-bg: #a2a2a270;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 1s ease;
+}
+
+.toggle-btn {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  overflow: hidden;
+  width: 300px;
+  height: 120px;
+  padding: 10px;
+  border-radius: 100px;
+  background-color: var(--button-bg);
+  background-image: url(images/day-bg.jpg);
+  background-size: cover;
+  transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.toggle-btn .switch {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: var(--switch-bg);
+  border-radius: 50%;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.25),
+    inset 5px 0 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+  cursor: pointer;
+}
+
+.toggle-btn .moon {
+  width: 85px;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  transform: translateY(200%);
+  transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+  z-index: 1;
+}
+
+.toggle-btn.active {
+  background-image: url(images/night-bg.jpg);
+}
+
+.toggle-btn.active .switch {
+  transform: translateX(calc(300px - 120px));
+}
+
+.toggle-btn.active .moon {
+  transform: translateY(0);
+}
